@@ -16,6 +16,7 @@ import {
   Container
 } from "@chakra-ui/react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom"
 
 const Home = () => {
   const [nameOfGroup, setNameOfGroup] = useState("");
@@ -44,12 +45,17 @@ const Home = () => {
     setGroups(parsedData || []);
   }, []);
 
+  const navigate = useNavigate()
+  const navigateToSplitPage = (id) => {
+    navigate(`/split-page/${id}`)
+  }
+
   return (
     <>
       <VStack className="">
       <Container maxW='5xl' className="flex flex-col gap-2 mt-10">
         {groups.length > 0 ? (groups.map((data) => (
-          <Box key={data.id} className=" bg-blue-500 p-2 text-white rounded-md ">
+          <Box key={data.id} className=" bg-blue-500 p-2 text-white rounded-md" onClick={() => navigateToSplitPage(data.id)}>
             {data.nameOfGroup}
           </Box>
         ))) : (<p>No group exists</p>)}
