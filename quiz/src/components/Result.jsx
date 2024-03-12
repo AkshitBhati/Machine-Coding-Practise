@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Result = ({ userAnswers, questions, resetQuiz =() =>{} }) => {
+const Result = ({ userAnswers, questions, resetQuiz = () => {} }) => {
     const correctAnswer = userAnswers.filter((answer) => answer).length
 
   return (
